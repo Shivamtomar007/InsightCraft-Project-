@@ -1,0 +1,85 @@
+@import "tailwindcss";
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Poppins', sans-serif;
+}
+
+input, select, textarea {
+  transition: all 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+
+button {
+  transition: all 0.3s ease;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.recharts-wrapper {
+  margin: 0 auto;
+}
+
+.recharts-legend-wrapper {
+  bottom: -20px !important;
+}
+
+.recharts-surface {
+  overflow: visible;
+}
+/* Light mode text contrast */
+.bg-gray-100.text-gray-800 {
+  color: #2f5488;
+}
+
+/* Chart container spacing */
+.recharts-wrapper {
+  margin: 1rem auto;
+}
+
+/* PDF export button styling */
+button[onClick*="exportPDF"] {
+  margin-top: 1rem;
+}
+
+/* Light mode list items */
+.bg-white .text-sm {
+  color: #040404;
+}
+/* Add to your App.css */
+.recharts-wrapper {
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.recharts-legend-item-text {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+}
+
+.recharts-tooltip {
+  background-color: white !important;
+  border: 1px solid #ddd !important;
+  border-radius: 4px !important;
+  padding: 10px !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+/* Ensure charts have proper size for PDF */
+#bar-chart, #pie-chart {
+  width: 100% !important;
+  height: 300px !important;
+}
