@@ -161,23 +161,52 @@ const App = () => {
     setError(null);
     
     try {
-      const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
-      const prompt = `Generate a detailed ${insightType} for: "${input}". 
-        Format the response EXACTLY like this:
-        
-        ## Strengths
-        - Strength 1
-        - Strength 2
-        
-        ## Weaknesses
-        - Weakness 1
-        
-        ## Opportunities
-        - Opportunity 1
-        - Opportunity 2
-        
-        ## Threats
-        - Threat 1`;
+     const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" }); // Using newer model
+const prompt = `
+Act as a top-tier business analyst. Generate a comprehensive, objective ${insightType} for: "${input}".
+
+Key Requirements:
+1. Conduct deep analysis considering market conditions, competitive landscape, and internal capabilities
+2. Provide balanced insights without pre-judging strength levels
+3. Include quantitative estimates where possible (market size, probability, impact scores)
+4. Consider both short-term and long-term perspectives
+5. Highlight non-obvious insights that require expert analysis
+
+Output Format (STRICTLY follow this structure):
+
+### Core Analysis
+[Brief 2-3 sentence summary of the overall assessment]
+
+### Strengths
+- [Strength 1] (Impact: High/Medium/Low) (Evidence: [supporting data point])
+- [Strength 2] (Competitive Advantage: [description]) (Sustainability: [timeframe])
+[Add more as needed]
+
+### Weaknesses
+- [Weakness 1] (Risk Level: [rating]) (Remediation: [suggestion])
+- [Weakness 2] (Operational Impact: [description])
+[Add more as needed]
+
+### Opportunities
+- [Opportunity 1] (Probability: X%) (Potential Value: [estimate])
+- [Opportunity 2] (Time Sensitivity: [urgency]) (Resources Needed: [list])
+[Add more as needed]
+
+### Threats
+- [Threat 1] (Likelihood: X%) (Potential Damage: [impact description])
+- [Threat 2] (External Factor: [source]) (Defensive Options: [suggestions])
+[Add more as needed]
+
+### Strategic Recommendations
+1. [Priority action 1] (Timeframe: [when])
+2. [Priority action 2] (Resources: [requirements])
+3. [Risk mitigation strategy]
+
+Note: 
+- Never state "Threat is low" or "Strength is high" without evidence
+- Provide concrete reasoning for each point
+- Include comparative industry benchmarks where applicable
+`;
       
       const result = await model.generateContent(prompt);
       const text = result.response.text();
